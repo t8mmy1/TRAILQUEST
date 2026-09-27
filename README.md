@@ -11,8 +11,6 @@ Find, share and review walking trails across Australia.
 - **Review:** leave ratings and comments as a registered member.
 - **Moderate:** approve or reject trail submissions through the staff dashboard.
 
-Profile, user management and report review pages are currently placeholders.
-
 ## TECH STACK
 
 Python · Django · SQLite · JavaScript · HTML · CSS · Pillow
@@ -33,7 +31,6 @@ Open **http://127.0.0.1:8000/**. The database starts empty; the screenshot shows
 
 Register a separate member account to submit and review trails. Use the superuser account at `/admin-dashboard/` to approve submissions before they appear in the public feed. Staff accounts cannot submit or review trails.
 
-The current configuration is for local development. Deployment setup will follow separately.
 
 ## TESTING
 
