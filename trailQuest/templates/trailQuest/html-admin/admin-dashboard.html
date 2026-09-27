@@ -1,0 +1,30 @@
+{% extends 'trailQuest/base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="admin-dashboard-container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the admin dashboard. Here you can manage users, approve trails, and review reports.</p>
+    
+    <div class="admin-cards">
+        <div class="admin-card">
+            <h2>Approve Trails</h2>
+            <p>Review and approve trail submissions from users before they become publicly visible.</p>
+            <a href="{% url 'pending-trails' %}" class="admin-btn">Manage Trail Approvals</a>
+        </div>
+        
+        <div class="admin-card">
+            <h2>Manage Users</h2>
+            <p>View and manage user accounts, modify permissions, and handle account access.</p>
+            <a href="{% url 'manage-user' %}" class="admin-btn">User Management</a>
+        </div>
+        
+        <div class="admin-card">
+            <h2>Review Reports</h2>
+            <p>Review and process user reports, feedback, and content flagged for moderation.</p>
+            <a href="{% url 'review-report' %}" class="admin-btn">View Reports</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

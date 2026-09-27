@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trail Quest - {% block title %}{% endblock %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'trailQuest/css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'trailQuest/css/trail-details.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    {% include 'trailQuest/navbar.html' %}
+    
+    {% if messages %}
+    <div class="messages-container">
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+          <button type="button" class="close-btn">&times;</button>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% block content %}{% endblock %}
+    {% include 'trailQuest/footer.html' %}
+  </div>
+  <script src="{% static 'trailQuest/js/navbar.js' %}"></script>
+  <script src="{% static 'trailQuest/js/messages.js' %}"></script>
+  <script src="{% static 'trailQuest/js/validator.js' %}"></script>
+</body>
+</html>

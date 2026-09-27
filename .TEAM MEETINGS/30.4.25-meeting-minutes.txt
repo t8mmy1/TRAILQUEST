@@ -1,0 +1,21 @@
+3:40 - START
+ •	Progress report
+ o	Gylles – 2 reusable, 2 helpers, site redesign, fix bug on login form validation
+ 	Suggestion: softer colour palette (Ivan)
+ o	Tommy – 6 reusable, 1 validation 
+ o	Ivan – 1 form validation
+ 	Advised to use reusable functions we’ve made instead of own conditions
+ 
+ 4:20 – BREAK 
+ 
+ 4:30 - PEER EVAL 
+ Weighing:
+ 	- Difficulty - 40%
+ 	- Is used on form - 35% 
+ 	- Who wrote the form - 25%
+ •	Agreed on contributions 
+ 
+ 
+  5:00 - RESUME VALIDATION FORMS
+
+  6:00 - FINISHED

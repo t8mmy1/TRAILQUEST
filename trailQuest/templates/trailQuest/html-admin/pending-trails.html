@@ -1,0 +1,45 @@
+{% extends 'trailQuest/base.html' %}
+{% block title %}Pending Trails{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="pending-trails-container">
+        <h1>Pending Trail Submissions</h1>
+        <p>Review and approve trail submissions from users.</p>
+        
+        {% if pending_trails %}
+            <div class="trails-table-container">
+                <table class="trails-table">
+                    <thead>
+                        <tr>
+                            <th>Trail Name</th>
+                            <th>Location</th>
+                            <th>Submission Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trail in pending_trails %}
+                        <tr>
+                            <td>{{ trail.name }}</td>
+                            <td>{{ trail.location }}</td>
+                            <td>{{ trail.date_submitted|date:"F j, Y, g:i a" }}</td>
+                            <td>
+                                <a href="{% url 'approve-trail-detail' trail.id %}" class="action-btn">Review</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="no-pending-trails">
+                <p>There are no pending trail submissions to review.</p>
+            </div>
+        {% endif %}
+        
+        <div class="back-link">
+            <a href="{% url 'admin-dashboard' %}">Back to Admin Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

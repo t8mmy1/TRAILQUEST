@@ -1,0 +1,17 @@
+10:30 - START
+- Task delegation
+- TTD approach 
+    Meaning we have to predict outcomes and have cases ready
+
+10:35 - TTD APPROACH
+MODEL TESTING 
+    1. Testing fields
+	2. Validation rules
+	3. Relationships
+VIEW TESTING 
+    1. Testing response codes
+	2. Testing different HTTP methods
+	3. Setup and Execution 
+FORM TESTING 
+
+10:55 - END

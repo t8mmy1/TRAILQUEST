@@ -1,0 +1,136 @@
+{% extends 'trailQuest/base.html' %}
+{% block title %}Trail Approval{% endblock %}
+{% block content %}
+<main class="container form">
+  <div class="form-card">
+    <h2>Trail Approval</h2>
+    <form method="post" action="{% url 'approve-trail-detail' trail.id %}" onsubmit="return validateApproveTrail(this)" novalidate enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="trailName">Trail Name <span class="required">*</span></label>
+        <input type="text" id="trailName" name="trail_name" value="{{ trail.name }}" required />
+        {% if name_error %}<small class="error-msg">{{ name_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location <span class="required">*</span></label>
+        <input type="text" id="location" name="location" value="{{ trail.location }}" required />
+        {% if location_error %}<small class="error-msg">{{ location_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input type="number" id="latitude" name="latitude" step="0.000001" value="{{ trail.latitude }}" />
+        {% if latitude_error %}<small class="error-msg">{{ latitude_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input type="number" id="longitude" name="longitude" step="0.000001" value="{{ trail.longitude }}" />
+        {% if longitude_error %}<small class="error-msg">{{ longitude_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="startPoint">Start Point</label>
+        <input type="text" id="startPoint" name="start_point" value="{{ trail.start_point }}" />
+        {% if start_point_error %}<small class="error-msg">{{ start_point_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="endPoint">End Point</label>
+        <input type="text" id="endPoint" name="end_point" value="{{ trail.end_point }}" />
+        {% if end_point_error %}<small class="error-msg">{{ end_point_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="distance">Distance (km) <span class="required">*</span></label>
+        <input type="number" id="distance" name="distance" step="0.1" value="{{ trail.distance }}" required />
+        {% if distance_error %}<small class="error-msg">{{ distance_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="elevationGain">Elevation Gain (m) <span class="required">*</span></label>
+        <input type="number" id="elevationGain" name="elevation_gain" step="0.1" value="{{ trail.elevation_gain }}" required />
+        {% if elevation_gain_error %}<small class="error-msg">{{ elevation_gain_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="estimatedTime">Estimated Time (hrs) <span class="required">*</span></label>
+        <input type="number" id="estimatedTime" name="estimated_time" step="0.1" value="{{ trail.estimated_time }}" required />
+        {% if estimated_time_error %}<small class="error-msg">{{ estimated_time_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="difficultyLevel">Difficulty Level <span class="required">*</span></label>
+        <select id="difficultyLevel" name="difficulty_level" required>
+          <option value="Beginner" {% if trail.difficulty_level == 'Beginner' %}selected{% endif %}>Beginner</option>
+          <option value="Intermediate" {% if trail.difficulty_level == 'Intermediate' %}selected{% endif %}>Intermediate</option>
+          <option value="Advanced" {% if trail.difficulty_level == 'Advanced' %}selected{% endif %}>Advanced</option>
+        </select>
+        {% if difficulty_level_error %}<small class="error-msg">{{ difficulty_level_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="trailType">Trail Type <span class="required">*</span></label>
+        <select id="trailType" name="trail_type" required>
+          <option value="Loop" {% if trail.trail_type == 'Loop' %}selected{% endif %}>Loop</option>
+          <option value="Out & Back" {% if trail.trail_type == 'Out & Back' %}selected{% endif %}>Out & Back</option>
+          <option value="Point-to-Point" {% if trail.trail_type == 'Point-to-Point' %}selected{% endif %}>Point-to-Point</option>
+        </select>
+        {% if trail_type_error %}<small class="error-msg">{{ trail_type_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="trailConditions">Trail Conditions</label>
+        <input type="text" id="trailConditions" name="trail_conditions" value="{{ trail.trail_conditions }}">
+        {% if trail_conditions_error %}<small class="error-msg">{{ trail_conditions_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="accessibility">Accessibility</label>
+        <input type="text" id="accessibility" name="accessibility" value="{{ trail.accessibility }}">
+        {% if accessibility_error %}<small class="error-msg">{{ accessibility_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="userNotes">Trail Notes</label>
+        <textarea id="userNotes" name="user_notes" rows="4">{{ trail.user_notes }}</textarea>
+        {% if user_notes_error %}<small class="error-msg">{{ user_notes_error }}</small>{% endif %}
+      </div>
+
+      {% if trail.photos %}
+      <div class="info-group">
+        <strong>Photos:</strong>
+        <div class="trail-photo">
+          <img class="trail-photo-img" src="{{ trail.photos.url }}" alt="{{ trail.name }}">
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label for="approvalStatus">Approval Status <span class="required">*</span></label>
+        <select id="approvalStatus" name="approval_status" required>
+          <option value="">-- Select --</option>
+          <option value="pending" {% if trail.status == 'pending' %}selected{% endif %}>Pending</option>
+          <option value="approved" {% if trail.status == 'approved' %}selected{% endif %}>Approved</option>
+          <option value="rejected" {% if trail.status == 'rejected' %}selected{% endif %}>Rejected</option>
+        </select>
+        {% if status_error %}<small class="error-msg">{{ status_error }}</small>{% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="adminComments">Admin Comments</label>
+        <textarea id="adminComments" name="admin_comments" rows="4">{{ trail.admin_comments }}</textarea>
+        {% if comment_error %}<small class="error-msg">{{ comment_error }}</small>{% endif %}
+      </div>
+
+      <button type="submit" class="btn">Update Trail Status</button>
+    </form>
+
+    <div class="back-link">
+      <a href="{% url 'pending-trails' %}">Back to Pending Trails</a>
+    </div>
+  </div>
+</main>
+{% endblock %}

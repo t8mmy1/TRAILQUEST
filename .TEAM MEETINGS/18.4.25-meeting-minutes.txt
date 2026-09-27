@@ -1,0 +1,41 @@
+12:30 - START
+•	Going through the assessment requirements for iteration 2
+•	Emphasised the importance of generalized for reusability (certain forms can reuse code)
+•	Utilize pomodoro for effective working
+12:50 
+•	Finish review of assignment requirements, everyone knows what they are doing and how to do it
+•	Using Jira, differentiated user stories and assigned them to members.
+•	Identified common functions for validations between the user forms.
+•	12 functions for 6 forms
+
+1:00 – RETROSPECTIVE 
+•	Go through retrospective to improve iteration
+•	1. Continue the use of github for iteration 2 since it was the most effective tool from iteration 1 and essentially form of communication
+•	2. This time around is already an improvement since our last obstacle was lack of communication and we are currently in a face to face meeting.
+•	3. Expected to hit our targets earlier this time.
+•	4. For this sprint we are implementing more consistent meetings.
+•	5. Implementing use of Jira for top down visualization of project progress.
+•	6. Earlier start-time to address quality compromise from last iteration.
+•	7. Treating this task with more urgency and importance, not getting overconfident and cocky for the tasks this time around. Problems that arise with this iteration can be solved in a more thorough and timely manner.
+•	8. The use of Jira this implementation will allow us to track progress better. 
+•	9. Jira helps with project decomposition and task delegation which will allow us to manage time and resources better this time around. 
+•	10. Revisit client feedback from iteration 1 to improve system design and layout. 
+•	NOTE FOR 3RD ITERATION – Record meetings earlier. 
+•	Pomodoro break
+
+1:15 – DESIGN PHASE 
+•	Modern website designers work from phone display first and then optimize for desktop users.
+•	Case studies:
+o	Threads
+- Layouts
+o	Facebook
+o	Gumtree
+•	Design ideas
+o	Centre carousel for trail showcase
+•	Concluded that most system designs follow a layout respective of their design type. Eg: 
+o	Social media layout prioritized for phone scrolling for browsing 
+o	Market place layouts
+
+1:50 – IMPLEMENTATION PHASE 
+•	Members choose tasks and start
+•	Issue joining Jira project

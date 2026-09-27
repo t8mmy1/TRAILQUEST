@@ -1,0 +1,225 @@
+/* Trail Details Page Styles */
+.trail-details-container {
+    padding: 2rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.trail-details-card {
+    padding: 2rem;
+}
+
+/* Header Section */
+.trail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border-scroll__bg-input);
+}
+
+.trail-title-section {
+    flex: 1;
+}
+
+.trail-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-base-text);
+    line-height: 1.2;
+}
+
+.trail-location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-paragraph);
+    font-size: 1.1rem;
+}
+
+/* Stats Section */
+.trail-stats {
+    display: flex;
+    gap: 2rem;
+    margin-left: 2rem;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.stat i {
+    font-size: 1.5rem;
+    color: var(--color-form-button);
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-base-text);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--color-paragraph);
+}
+
+/* Photo Section */
+.trail-photo-container {
+    max-width: 100%;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.trail-photo {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.trail-photo-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius-small);
+        display: block;
+        margin: 0 auto;
+    }
+
+.trail-photo:hover {
+    transform: scale(1.02);
+}
+
+/* Info Grid Section */
+.trail-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.info-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-base-text);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border-scroll__bg-input);
+    margin: 1.25rem auto;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: var(--color-paragraph);
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    color: var(--color-base-text);
+    font-size: 1.1rem;
+}
+
+/* Notes Section */
+.trail-notes {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-small);
+    margin-bottom: 2rem;
+}
+
+.trail-notes h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--color-base-text);
+}
+
+.trail-notes p {
+    color: var(--color-paragraph);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* Action Buttons */
+.trail-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--color-form-button);
+    color: white;
+    border: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--color-form-button);
+    color: var(--color-form-button);
+}
+
+.btn-primary:hover {
+    background: #0052a3;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 102, 204, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trail-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .trail-title {
+        font-size: 2rem;
+    }
+
+    .trail-stats {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+    }
+
+    .trail-info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .trail-actions {
+        flex-direction: column;
+    }
+
+    .trail-actions .btn {
+        width: 100%;
+    }
+} 

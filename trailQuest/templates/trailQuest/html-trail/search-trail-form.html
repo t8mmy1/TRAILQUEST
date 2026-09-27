@@ -1,0 +1,52 @@
+<div class="form-card">
+  <!-- New -->
+  <h2>Search Trails</h2>
+  <form method="get" id="form" action="{% url 'search-trail-form' %}" onsubmit="return validateSearchTrail(this)" novalidate>
+    <div class="form-group">
+      <label for="trailName">Trail Name</label>
+      <input type="text" id="trailName" name="trailName" placeholder="e.g. Blue Mountain Circuit">
+      <small class="error-msg" id="trailNameError"></small>
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" placeholder="e.g. Blue Mountains National Park">
+      <small class="error-msg" id="locationError"></small>
+    </div>
+    <div class="form-group">
+      <label for="difficultyLevel">Difficulty Level</label>
+      <select id="difficultyLevel" name="difficultyLevel">
+        <option value="">-- Select --</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+      <small class="error-msg" id="difficultyLevelError"></small>
+    </div>
+    <div class="form-group">
+      <div class="flex-distance">
+        <div class="distance-group">
+          <label for="distanceRange">Min Distance (km)</label>
+          <input type="number" id="minDist" name="minDist" placeholder="Minimum Range">
+          <small class="error-msg" id="minDistError"></small>
+        </div>
+        <div class="distance-group">
+          <label for="distanceRange">Max Distance (km)</label>
+          <input type="number" id="maxDist" name="maxDist" placeholder="Maximum Range">
+          <small class="error-msg" id="maxDistError"></small>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="trailType">Trail Type</label>
+      <select id="trailType" name="trailType">
+        <option value="">-- Select --</option>
+        <option value="Loop">Loop</option>
+        <option value="Out & Back">Out & Back</option>
+        <option value="Point-to-Point">Point-to-Point</option>
+      </select>
+      <small class="error-msg" id="trailTypeError"></small>
+    </div>
+    <button type="submit" class="btn">Search Trails</button>
+  </form>
+  <small class="error-msg" id="formError"></small>
+</div> 

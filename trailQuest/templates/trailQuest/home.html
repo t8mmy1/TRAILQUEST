@@ -1,0 +1,54 @@
+{% extends 'trailQuest/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+      <div class="container hero-content">
+        <div class="user-welcome">Welcome {{ user.username }}</div>
+        <h2>Find your next outdoor adventure</h2>
+        <div class="search-filter-wrapper">
+          <input type="text"
+            placeholder="Search for trails..."
+            name="trailName"
+            id="trailNameSearchInput"
+            class="search-input"
+            data-search-url="{% url 'search-trail-form' %}" />
+
+          <button type="button" class=" btn-secondary filter-btn">
+            <i class="fa fa-filter"></i>
+          </button>
+        </div>
+      </div>
+      <br>
+      <span class="nav-time">{{ current_time }}</span>
+    </section>
+
+    <main class="container trail-grid">
+        {% if trails %}
+            {% for trail in trails %}
+                <div class="trail-card">
+                    <a class="card-link" href="{% url 'view-trail' trail.id %}" >
+                    {% if trail.photos %}
+                        <img src="{{ trail.photos.url }}" alt="{{ trail.name }}" />
+                    {% else %}
+                        <img src="https://i.sstatic.net/y9DpT.jpg" alt="Default Trail Image" />
+                    {% endif %}
+                    <h3>{{ trail.name }}</h3>
+                    </a>
+                    <p>{{ trail.distance }} km • {{ trail.difficulty_level }} • {{ trail.location }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-trails">
+                <p>No approved trails found.</p>
+            </div>
+        {% endif %}
+    </main>
+
+    <!-- Filter Modal -->
+    <div id="filterModal" class="modal-overlay" style="display:none;">
+      <div class="modal-content slide-up">
+        <button class="modal-close" id="closeFilterModal" type="button">&times;</button>
+        {% include 'trailQuest/html-trail/search-trail-form.html' %}
+      </div>
+    </div>
+{% endblock %}

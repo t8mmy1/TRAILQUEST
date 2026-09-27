@@ -1,0 +1,122 @@
+{% extends 'trailQuest/base.html' %}
+{% block title %}View Trail{% endblock %}
+{% block content %}
+<main class="container trail-details-container">
+    <div class="trail-card trail-details-card">
+        <div class="trail-header">
+            <div class="trail-title-section">
+                <h1 class="trail-title">{{ trail.name }}</h1>
+                <div class="trail-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>{{ trail.location }}</span>
+                </div>
+            </div>
+            <div class="trail-stats">
+                <div class="stat">
+                    <i class="fas fa-route"></i>
+                    <div class="stat-content">
+                        <span class="stat-value">{{ trail.distance }}</span>
+                        <span class="stat-label">km</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-mountain"></i>
+                    <div class="stat-content">
+                        <span class="stat-value">{{ trail.elevation_gain }}</span>
+                        <span class="stat-label">m</span>
+                    </div>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-content">
+                        <span class="stat-value">{{ trail.estimated_time }}</span>
+                        <span class="stat-label">hours</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trail-photo-container">
+            <img src="{{ trail.photos.url }}" alt="{{ trail.name }}" class="trail-photo">
+        </div>
+
+        <div class="trail-info-grid">
+            <div class="info-section">
+                <h3>Trail Information</h3>
+                <div class="info-item">
+                    <span class="info-label">Start/End Point</span>
+                    <span class="info-value">{{ trail.start_point }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Difficulty</span>
+                    <span class="info-value">{{ trail.difficulty_level }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Trail Type</span>
+                    <span class="info-value">{{ trail.trail_type }}</span>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Location Details</h3>
+                <div class="info-item">
+                    <span class="info-label">Coordinates</span>
+                    <span class="info-value">{{ trail.latitude }} {{ trail.longitude }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Conditions</span>
+                    <span class="info-value">{{ trail.trail_conditions }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Accessibility</span>
+                    <span class="info-value">{{ trail.accessibility }}</span>
+                </div>
+            </div>
+        </div>
+
+        {% if trail.user_notes %}
+        <div class="trail-notes">
+            <h3>User Notes</h3>
+            <p>{{ trail.user_notes }}</p>
+        </div>
+        {% endif %}
+
+        <div class="trail-actions">
+            {% if user.is_authenticated and not user.is_staff and not user.is_superuser%}
+            <a href="{% url 'review-trail' trail_id=trail.id %}" class="btn btn-primary">Review Trail</a>
+            
+             {% else %}
+             {% endif %}
+        </div>
+
+    </div>
+
+    <br> 
+    
+    
+    {% if reviews %}
+    <div class="trail-card trail-details-card">
+        <div class="info-section">
+            <h3>User Reviews</h3>
+            {% for review in reviews %}
+                <div class="review">
+                    <p><strong>{{ review.user.username }}</strong> rated it {{ review.rating }}/5</p>
+                    {% if review.comment %}
+                    <div class="user-review-display">
+                        <p>{{ review.comment }}</p>
+                    </div>
+                    {% else %}
+                    <div class="user-review-display">
+                        <p><em>No comment left.</em></p>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    {% endif %}
+</div>
+    
+</main>
+{% endblock %} 

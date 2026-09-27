@@ -1,0 +1,120 @@
+{% extends 'trailQuest/base.html' %}
+{% block title %}Trail Submission{% endblock %}
+{% block content %} 
+<main class="container form">
+    <div class="form-card">
+      <h2>Trail Submission</h2>
+      <form method="post" action="{% url 'submit-trail' %}" enctype="multipart/form-data" onsubmit="return validateTrailSubmission(this);" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="trailName">Trail Name <span class="required">*</span></label>
+          <input type="text" id="trailName" name="trailName" placeholder="e.g. Blue Mountain Circuit" onblur="validateTrailName(this);" required>
+          <small class="error-msg" id="trailNameError">{{ name_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="location">Location <span class="required">*</span></label>
+          <input type="text" id="location" name="location" placeholder="e.g. Blue Mountains National Park" onblur="validateLocation(this);" required>
+          <small class="error-msg" id="locationError">{{ location_error }}</small>
+        </div>
+        
+        <div class="form-group">
+          <label>GPS Coordinates</label>
+          <div class="flex-coordinates">
+            <div class="coordinate-group">
+              <label for="latitude"></label>
+              <input type="number" id="latitude" name="latitude" placeholder="Latitude" step="any" min="-90" max="90" onblur="validateCoordinate(this);">
+              <small class="error-msg" id="latitudeError">{{ latitude_error }}</small>
+            </div>
+            <div class="coordinate-group">
+              <label for="longitude"></label> 
+              <input type="number" id="longitude" name="longitude" placeholder="Longitude" step="any" min="-180" max="180" onblur="validateCoordinate(this);">
+              <small class="error-msg" id="longitudeError">{{ longitude_error }}</small>
+            </div>
+          </div>
+        </div>
+        
+  
+        <div class="form-group">
+          <label for="startPoint">Start Point</label>
+          <input type="text" id="startPoint" name="startPoint" placeholder="e.g. Glenbrook Station">
+          <small class="error-msg" id="startPointError">{{ start_point_error }}</small>
+        </div>
+
+        <div class="form-group">
+          <label for="endPoint">End Point</label>
+          <input type="text" id="endPoint" name="endPoint" placeholder="e.g. Glenbrook Station">
+          <small class="error-msg" id="endPointError">{{ end_point_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="distance">Distance (km) <span class="required">*</span></label>
+          <input type="number" id="distance" name="distance" placeholder="e.g. 10.5" onblur="validateDistance(this);" required>
+          <small class="error-msg" id="distanceError">{{ distance_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="elevationGain">Elevation Gain (m) <span class="required">*</span></label>
+          <input type="number" id="elevationGain" name="elevationGain" placeholder="e.g. 230" onblur="validateElevation(this);" required>
+          <small class="error-msg" id="elevationGainError">{{ elevation_gain_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="difficultyLevel">Difficulty Level <span class="required">*</span></label>
+          <select id="difficultyLevel" name="difficultyLevel" onchange="validateOption(this);" required>
+            <option value="">-- Select --</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+          <small class="error-msg" id="difficultyLevelError">{{ difficulty_level_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="trailType">Trail Type <span class="required">*</span></label>
+          <select id="trailType" name="trailType" onchange="validateOption(this);" required>
+            <option value="">-- Select --</option>
+            <option value="Loop">Loop</option>
+            <option value="Out & Back">Out & Back</option>
+            <option value="Point-to-Point">Point-to-Point</option>
+          </select>
+          <small class="error-msg" id="trailTypeError">{{ trail_type_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="estimatedTime">Estimated Time (hrs) <span class="required">*</span></label>
+          <input type="number" id="estimatedTime" name="estimatedTime" placeholder="e.g. 3.5" step="0.1" min="0" onblur="validateTime(this)" required>
+          <small class="error-msg" id="estimatedTimeError">{{ estimated_time_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="trailConditions">Trail Conditions</label>
+          <input type="text" id="trailConditions" name="trailConditions" placeholder="e.g. muddy, rocky…">
+          <small class="error-msg" id="trailConditionsError">{{ trail_conditions_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="accessibility">Accessibility Info</label>
+          <input type="text" id="accessibility" name="accessibility" placeholder="e.g. wheelchair-friendly">
+          <small class="error-msg" id="accessibilityError">{{ accessibility_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="photos">Upload Photos</label>
+          <input type="file" id="photos" name="photos" multiple>
+          <small class="error-msg" id="photosError">{{ photos_error }}</small>
+        </div>
+  
+        <div class="form-group">
+          <label for="userNotes">User Notes</label>
+          <textarea id="userNotes" name="userNotes" placeholder="Share any extra tips or personal insights..." rows="4"></textarea>
+          <small class="error-msg" id="userNotesError">{{ user_notes_error }}</small>
+        </div>
+  
+        <button type="submit" class="btn">Submit Trail</button>
+  
+      </form>
+    </div>
+  </main>
+
+{% endblock %}
