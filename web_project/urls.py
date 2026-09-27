@@ -19,9 +19,11 @@ from django.urls import path, include
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path("", include("trailQuest.urls")),
-    path("logout/", LogoutView.as_view(), name="logout"),
-    path('admin/', admin.site.urls)
+    path("", RedirectView.as_view(pattern_name="home")),
+    path("trailquest/", include("trailQuest.urls")),
+    path("trailquest/logout/", LogoutView.as_view(), name="logout"),
+    path('trailquest/admin/', admin.site.urls)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
